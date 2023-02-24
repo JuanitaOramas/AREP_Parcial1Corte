@@ -57,7 +57,6 @@ public class HttpServer {
                 outputLine = "HTTP/1.1 200 OK\r\n"
                         + "Content-Type: text/json\r\n"
                         + "\r\n";
-
             }
 
             out.println(outputLine);
@@ -78,22 +77,21 @@ public class HttpServer {
             for (Field f: result){
                 response = response + f.getName();
             }
-
         return response;
     }
 
     public static String interpreteCommand(Class c) throws NoSuchMethodException {
+        HttpServer h = null;
         if (tipo (String.valueOf(c)) != null){
-            c.getterFields(c);
+            h.getterFields(c);
         }
         c.getDeclaredMethod("", null);
 
         return "";
-
     }
 
     //saber tipo
-    public static Class<String> tipo (String s)  {
+    public static Class<String> tipo(String s)  {
         if (s == "String"){
             return String.class;
         }
@@ -104,23 +102,18 @@ public class HttpServer {
     //methods
     public Method[] getDeclaredMethodos(Class c) throws NoSuchMethodException {
         String response = "";
-        Method metodos = c.getDeclaredMethod("chat", null);
-        ArrayList<>;
-        for (Method m: metodos){
+        //Method metodos = c.getDeclaredMethod("chat", null);
+        ArrayList<Object> metoditos = new ArrayList<>();
+
+        for (Object m: metoditos){
             response = response + m.toString();
         }
         return new Method[0];
     }
-    public static String withivoke(){
+
+    public static String withinvoke(){
         return "withivoke";
     }
-
-
-
-
-
-
-
 
 
     public static String HtmlWithForms(){
