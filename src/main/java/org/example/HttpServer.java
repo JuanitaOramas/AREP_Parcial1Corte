@@ -9,6 +9,24 @@ public class HttpServer {
 
     public static void main(String[] args ) throws IOException {
 
+        // Fields
+        ArrayList<String> Fields = null;
+
+        for (String className : Fields) {
+            Class<?> c = null;
+            c.getDeclaredFields();
+
+            try {c = Class.forName(className);
+            } catch (ClassNotFoundException e) {throw new RuntimeException(e);}
+
+
+            Method[] myMethods = c.getMethods();
+
+            for (Method m : myMethods) {
+
+            }
+        }
+
 
 
         ServerSocket serverSocket = null;
@@ -55,12 +73,6 @@ public class HttpServer {
                         + "Content-Type: text/html\r\n" + "\r\n"
                         + HtmlWithForms();
             }
-
-//            } else if (path.contains("/consulta?comando=")) {
-//
-//                outputLine = "HTTP/1.1 200 OK\r\n"
-//                        + "Content-Type: text/json\r\n" + "\r\n";
-//            }
             out.println(outputLine);
             out.close();
             in.close();

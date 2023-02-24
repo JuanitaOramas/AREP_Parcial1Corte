@@ -1,0 +1,3 @@
+# Parcial  
+
+Nombre: Juanita Oramas
