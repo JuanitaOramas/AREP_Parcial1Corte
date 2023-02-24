@@ -1,5 +1,6 @@
 package org.example;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.*;
 import java.io.*;
@@ -8,26 +9,6 @@ import java.util.ArrayList;
 public class HttpServer {
 
     public static void main(String[] args ) throws IOException {
-
-        // Fields
-        ArrayList<String> Fields = null;
-
-        for (String className : Fields) {
-            Class<?> c = null;
-            c.getDeclaredFields();
-
-            try {c = Class.forName(className);
-            } catch (ClassNotFoundException e) {throw new RuntimeException(e);}
-
-
-            Method[] myMethods = c.getMethods();
-
-            for (Method m : myMethods) {
-
-            }
-        }
-
-
 
         ServerSocket serverSocket = null;
         try {
@@ -72,17 +53,71 @@ public class HttpServer {
                 outputLine = "HTTP/1.1 200 OK\r\n"
                         + "Content-Type: text/html\r\n" + "\r\n"
                         + HtmlWithForms();
+            } else if (path.contains("/chat2")) {
+                outputLine = "HTTP/1.1 200 OK\r\n"
+                        + "Content-Type: text/json\r\n"
+                        + "\r\n";
+
             }
+
             out.println(outputLine);
             out.close();
             in.close();
             clientSocket.close();
 
         }
+
         serverSocket.close();
 
 
     }
+
+    public static String getterFields(Class c){
+            String response = "";
+            Field[] result = c.getDeclaredFields();
+            for (Field f: result){
+                response = response + f.getName();
+            }
+
+        return response;
+    }
+
+    public static String interpreteCommand(Class c) throws NoSuchMethodException {
+        if (tipo (String.valueOf(c)) != null){
+            c.getterFields(c);
+        }
+        c.getDeclaredMethod("", null);
+
+        return "";
+
+    }
+
+    //saber tipo
+    public static Class<String> tipo (String s)  {
+        if (s == "String"){
+            return String.class;
+        }
+        return null;
+    }
+
+
+    //methods
+    public Method[] getDeclaredMethodos(Class c) throws NoSuchMethodException {
+        String response = "";
+        Method metodos = c.getDeclaredMethod("chat", null);
+        ArrayList<>;
+        for (Method m: metodos){
+            response = response + m.toString();
+        }
+        return new Method[0];
+    }
+    public static String withivoke(){
+        return "withivoke";
+    }
+
+
+
+
 
 
 
