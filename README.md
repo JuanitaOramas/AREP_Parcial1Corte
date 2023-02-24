@@ -2,8 +2,7 @@
 
 Nombre: Juanita Oramas
 
-Requisitos:
-
+Parcial Primer Tercio
 
 ---
 Compilar 
